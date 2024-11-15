@@ -160,4 +160,4 @@ recipe-recommender-system/
 
 ## **Contributors**
 
-- **Your Name**: Brandon Wong
+- Brandon Wong
