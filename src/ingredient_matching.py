@@ -1,5 +1,5 @@
 import os
-from inventory import add_to_inventory, remove_from_inventory, view_inventory, load_inventory
+from src.inventory import add_to_inventory, remove_from_inventory, view_inventory, load_inventory
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd

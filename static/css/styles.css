@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdf4e3;
+    color: #333;
+}
+
+header {
+    background-color: #ff6f61;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+form input[type="text"] {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+form button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e65d55;
+}

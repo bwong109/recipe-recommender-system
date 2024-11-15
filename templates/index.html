@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Recommender</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Recipe Recommender</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Inventory</h2>
+            <ul>
+                {% for item in inventory %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <form method="POST" action="/add">
+                <h3>Add Ingredients</h3>
+                <input type="text" name="ingredients" placeholder="e.g., chicken, salt">
+                <button type="submit">Add</button>
+            </form>
+            <form method="POST" action="/remove">
+                <h3>Remove Ingredients</h3>
+                <input type="text" name="ingredients" placeholder="e.g., salt">
+                <button type="submit">Remove</button>
+            </form>
+        </section>
+        <section>
+            <h2>Upload an Image</h2>
+            <form method="POST" action="/upload" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*">
+                <button type="submit">Upload and Extract Ingredients</button>
+            </form>
+        </section>
+        <section>
+            <h2>Get Recipe Recommendations</h2>
+            <form method="POST" action="/recommend">
+                <input type="text" name="additional_ingredients" placeholder="Additional ingredients (optional)">
+                <button type="submit">Get Recipes</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

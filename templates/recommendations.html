@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Recommendations</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Recommended Recipes</h1>
+    </header>
+    <main>
+        <ul>
+            {% for recipe in recommendations %}
+                <li>
+                    <h2>{{ recipe['Title'] }}</h2>
+                    <p><strong>Ingredients:</strong> {{ recipe['Ingredients'] }}</p>
+                    <p><strong>Instructions:</strong> {{ recipe['Instructions'] }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="/">Back to Home</a>
+    </main>
+</body>
+</html>

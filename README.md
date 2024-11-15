@@ -1,173 +1,169 @@
 
-# **Recipe Recommender System**  
-**Location:** Los Angeles, CA  
-**Type:** Personal Project  
+# **Recipe Recommender System**
 
-## **Overview**  
-This project is a mobile app that leverages machine learning and OCR technology to create a recipe recommender system. It suggests recipes based on available ingredients, allows manual recipe searches, and automatically updates user ingredient inventories by scanning grocery receipts.
+A user-friendly, interactive recipe recommender application that allows users to manage their ingredient inventory, extract ingredients from images using OCR, and receive recipe recommendations based on available ingredients. Designed with simplicity and modularity in mind, this project combines a Flask-powered backend with a sleek, food-themed frontend.
 
 ---
 
-## **Features**  
-1. **User Authentication**  
-   - Secure login and sign-up functionality using Firebase Authentication or JWT.
+## **Features**
 
-2. **Ingredient Inventory Management**  
-   - **Manual Input**: Users can manually add or remove ingredients.  
-   - **OCR Integration**:  
-     - Uses Tesseract OCR to scan grocery receipts.  
-     - Preprocesses text to extract ingredient names and quantities.  
-     - Automatically updates the user’s inventory.  
+1. **Inventory Management**:
+   - Add ingredients to your inventory.
+   - Remove ingredients you no longer have.
+   - View your inventory in an interactive web interface.
 
-3. **Recipe Recommendation**  
-   - Suggests recipes based on the user's available ingredients.  
-   - Implements ingredient-to-recipe matching using natural language processing (NLP).  
-   - Utilizes a machine learning-powered recommendation engine to optimize suggestions.  
+2. **OCR-Based Ingredient Extraction**:
+   - Upload images (e.g., grocery receipts or handwritten notes).
+   - Automatically extract ingredients using OCR.
 
-4. **Recipe Search**  
-   - Manual search functionality for recipes by keyword or cuisine.  
-   - Filters recipes by dietary restrictions or preferences (e.g., vegetarian, gluten-free).  
+3. **Recipe Recommendations**:
+   - Get recipe recommendations based on your inventory and additional ingredients.
+   - View detailed recipe instructions and required ingredients.
 
-5. **User Preferences**  
-   - Collects and stores user preferences for personalized recommendations.  
+4. **Interactive Web Interface**:
+   - Simple and intuitive design inspired by food companies.
+   - Responsive and visually appealing layout.
 
 ---
 
-## **Technology Stack**  
-### **Frontend**  
-- React Native (cross-platform compatibility for iOS and Android).
+## **Project Structure**
 
-### **Backend**  
-- Flask or FastAPI for building RESTful APIs.
-
-### **Database**  
-- Firebase (real-time and user-friendly) or PostgreSQL for secure data storage.
-
-### **OCR**  
-- Tesseract OCR for grocery receipt scanning.
-
-### **Machine Learning & NLP**  
-- Python libraries such as Scikit-learn, TensorFlow, or Hugging Face for ingredient matching and recommendation optimization.
-
-### **Recipe API**  
-- Spoonacular or Edamam APIs for recipe data.
-
----
-
-## **Architecture**  
-```plaintext
-Mobile App (React Native)
-    ↓
-Backend APIs (Flask/FastAPI)
-    ↓
-Database (Firebase/PostgreSQL)
-    ↓
-OCR (Tesseract) & ML Model (Python)
-    ↓
-External Recipe API (Spoonacular/Edamam)
+```
+recipe-recommender-system/
+├── app.py                      # Main Flask application
+├── data/                       # Data directory
+│   ├── inventory.json          # Persistent storage for the inventory
+│   ├── processed_recipe_dataset.csv # Preprocessed recipe dataset
+│   └── sample_receipt.jpg      # Sample image for OCR testing
+├── uploads/                    # Temporary directory for uploaded images
+├── static/                     # Static assets
+│   ├── css/
+│   │   └── styles.css          # Custom CSS for the frontend
+├── templates/                  # HTML templates
+│   ├── index.html              # Main page template
+│   ├── recommendations.html    # Recipe recommendations page
+├── src/                        # Backend modules
+│   ├── __init__.py             # Makes src a package
+│   ├── ingredient_matching.py  # Recipe recommendation logic
+│   ├── inventory.py            # Inventory management
+│   ├── ocr_integration.py      # OCR functionality
 ```
 
 ---
 
-## **Modules**  
-### **1. User Authentication**  
-- Secure login/sign-up functionality using Firebase Authentication or JWT tokens.  
+## **Setup Instructions**
 
-### **2. Ingredient Inventory Management**  
-- Dynamic list to display and manage ingredients.  
-- **OCR Integration**:  
-  - Extracts text from receipts using Tesseract OCR.  
-  - Processes text to identify ingredients and quantities.  
+### **1. Prerequisites**
+- Python 3.7 or higher
+- Tesseract-OCR installed on your system
+  - [Download Tesseract](https://github.com/tesseract-ocr/tesseract)
 
-### **3. Recipe Recommendation**  
-- Uses NLP to tokenize and match recipe ingredients with user inventory.  
-- ML-based recommendation system (collaborative filtering or content-based filtering).  
+### **2. Installation**
 
-### **4. Recipe Search**  
-- Allows manual recipe search using keywords or filters.  
-- Integrates external recipe APIs for comprehensive search results.  
-
-### **5. User Preferences**  
-- Customizes recipe recommendations based on dietary restrictions and preferences.  
-
----
-
-## **Implementation Details**  
-### **Backend APIs**  
-- RESTful API endpoints for:  
-  - User authentication.  
-  - Ingredient inventory management.  
-  - Recipe recommendation and search.  
-
-### **Machine Learning & NLP**  
-- Ingredient matching uses cosine similarity or Jaccard index.  
-- Recipe recommendation engine trains on public datasets like Recipe1M+.  
-
-### **OCR Integration**  
-- Tesseract OCR extracts grocery receipt data.  
-- Text preprocessing identifies and updates ingredient inventories.  
-
-### **Frontend**  
-- Built with React Native for seamless cross-platform performance.  
-- Key interfaces:  
-  - Ingredient Inventory: Dynamic list with add/remove functionality.  
-  - Recipe Recommendations: Personalized recipe feed.  
-  - Recipe Search: Manual keyword or filter-based search.  
-
----
-
-## **How to Run the Project**  
-### **Frontend**  
-1. Install dependencies:  
+1. Clone the repository:
    ```bash
-   npm install
-   ```
-2. Run the development server:  
-   ```bash
-   npm start
+   git clone https://github.com/your-username/recipe-recommender-system.git
+   cd recipe-recommender-system
    ```
 
-### **Backend**  
-1. Install dependencies:  
+2. Create a virtual environment and activate it:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate      # On Linux/Mac
+   venv\Scripts\activate         # On Windows
+   ```
+
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-2. Start the Flask/FastAPI server:  
-   ```bash
-   flask run
+
+4. Ensure Tesseract-OCR is installed and update the path in `src/ocr_integration.py`:
+   ```python
+   pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
    ```
 
-### **OCR Setup**  
-1. Install Tesseract OCR:  
-   - macOS:  
-     ```bash
-     brew install tesseract
-     ```  
-   - Ubuntu:  
-     ```bash
-     sudo apt install tesseract-ocr
-     ```
-2. Integrate Tesseract with Python using the `pytesseract` library:  
+5. Prepare directories:
    ```bash
-   pip install pytesseract
+   mkdir uploads
+   ```
+
+### **3. Running the Application**
+1. Start the Flask server:
+   ```bash
+   python app.py
+   ```
+
+2. Open your browser and navigate to:
+   ```
+   http://127.0.0.1:5000/
    ```
 
 ---
 
-## **Future Improvements**  
-1. Enhance the recommendation engine with deep learning (e.g., transformers).  
-2. Add a shopping list feature for missing recipe ingredients.  
-3. Implement real-time inventory sync across multiple devices.  
-4. Incorporate user feedback loops for better personalization.
+## **Usage**
+
+### **1. Inventory Management**
+- **Add Ingredients**: Enter a comma-separated list of ingredients to add.
+- **Remove Ingredients**: Specify the ingredients to remove from your inventory.
+- **View Inventory**: See a complete list of your current ingredients.
+
+### **2. Upload Images for OCR**
+- Upload an image of a grocery receipt or ingredient list.
+- The application will extract ingredients and add them to your inventory.
+
+### **3. Get Recipe Recommendations**
+- Use your inventory and optionally add extra ingredients to find the best-matching recipes.
+- View recipe details, including ingredients and instructions.
 
 ---
 
-## **Acknowledgments**  
-- **Tesseract OCR** for text extraction.  
-- **Spoonacular/Edamam APIs** for recipe data.  
-- **Public Datasets** like Recipe1M+ for training the recommendation system.  
+## **Demo**
+
+### **Home Page**
+- Manage inventory.
+- Upload images for OCR-based ingredient extraction.
+- Request recipe recommendations.
+
+### **Recipe Recommendations**
+- See a list of recommended recipes based on your inventory.
+- Click to view detailed instructions and ingredients.
 
 ---
 
-## **License**  
-This project is licensed under the MIT License.  
+## **Technologies Used**
+
+1. **Backend**:
+   - Flask (Python)
+   - Tesseract-OCR (OCR functionality)
+
+2. **Frontend**:
+   - HTML5
+   - CSS3 (with custom styling)
+
+3. **Libraries**:
+   - `pandas`: For data manipulation.
+   - `scikit-learn`: For calculating similarity scores.
+   - `pytesseract`: For OCR integration.
+
+---
+
+## **Future Enhancements**
+
+- **User Authentication**: Allow users to create accounts and manage their inventories individually.
+- **Advanced Filtering**: Filter recipes by cuisine, cooking time, or dietary preferences.
+- **Database Integration**: Replace JSON storage with a relational database like SQLite or PostgreSQL.
+- **Mobile-Friendly Design**: Optimize the interface for mobile users.
+
+---
+
+## **License**
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+---
+
+## **Contributors**
+
+- **Your Name**: Initial development and design.
+- Contributions welcome! Feel free to submit pull requests or raise issues.
