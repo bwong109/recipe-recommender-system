@@ -1,0 +1,33 @@
+
+# OCR for grocery receipts
+pytesseract
+Pillow
+
+# Natural Language Processing
+spacy
+nltk
+
+# Data Analysis and Machine Learning
+pandas
+numpy
+scikit-learn
+
+# Web Scraping
+beautifulsoup4
+requests
+
+# Web Framework (optional, for a web interface)
+flask
+
+# Others
+matplotlib
+
+pytesseract
+Pillow
+numpy
+pandas
+scikit-learn
+flask
+matplotlib
+requests
+beautifulsoup4
