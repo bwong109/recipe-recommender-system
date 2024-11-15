@@ -157,13 +157,7 @@ recipe-recommender-system/
 
 ---
 
-## **License**
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
----
 
 ## **Contributors**
 
-- **Your Name**: Initial development and design.
-- Contributions welcome! Feel free to submit pull requests or raise issues.
+- **Your Name**: Brandon Wong
